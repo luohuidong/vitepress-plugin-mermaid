@@ -132,11 +132,6 @@ packages/vitepress-plugin-mermaid-preview/
 │   └── composables/
 │       ├── useMermaidPreview.js  # Compiled composable
 │       └── useMermaidPreview.d.ts # Type declarations
-├── playground/                   # Debug playground
-│   ├── index.html
-│   ├── main.ts
-│   ├── App.vue
-│   └── vite.config.ts
 ├── package.json
 ├── tsconfig.json
 ├── vite.config.ts
@@ -171,26 +166,6 @@ pnpm dev
 # Build
 pnpm build
 ```
-
-### Playground Debugging
-
-The plugin provides a Playground page where you can edit Mermaid code in real-time and test the preview functionality.
-
-```bash
-# Navigate to plugin directory
-cd packages/vitepress-plugin-mermaid-preview
-
-# Start playground
-pnpm playground
-```
-
-Playground Features:
-
-- 📝 Code editor on the left, real-time diagram rendering
-- 🎨 One-click toggle between dark/light themes
-- 📋 Built-in diagram examples (flowcharts, sequence diagrams, class diagrams, ER diagrams, Gantt charts)
-- 💾 Download generated SVG files
-- 🔍 Click on diagrams to open fullscreen preview and test all interaction features
 
 ### Debugging in Documentation Site
 

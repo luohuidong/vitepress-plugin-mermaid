@@ -38,14 +38,14 @@ packages/vitepress-plugin-mermaid-preview/
 
 ### Export Paths
 
-| Import Path | Description |
-| -------------------------------------------------------------------------- | --------------------------------------- |
-| `@unify-js/vitepress-plugin-mermaid` | Main entry, exports `mermaidMarkdownPlugin`, etc. |
-| `@unify-js/vitepress-plugin-mermaid/theme` | Theme configuration, recommended approach |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown` | markdown-it plugin |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue` | Mermaid component (Vue SFC) |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview component (Vue SFC) |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State management composable |
+| Import Path                                                        | Description                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------- |
+| `@unify-js/vitepress-plugin-mermaid`                               | Main entry, exports `mermaidMarkdownPlugin`, etc. |
+| `@unify-js/vitepress-plugin-mermaid/theme`                         | Theme configuration, recommended approach         |
+| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | markdown-it plugin                                |
+| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid component (Vue SFC)                       |
+| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview component (Vue SFC)                       |
+| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State management composable                       |
 
 ## Local Development
 

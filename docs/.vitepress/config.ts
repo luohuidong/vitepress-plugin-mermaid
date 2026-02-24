@@ -1,18 +1,17 @@
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '../../src/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '../../src/mermaid-markdown';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'VitePress Mermaid',
-  description: 'VitePress plugin for Mermaid diagram preview with fullscreen, zoom, and pan support',
+  description:
+    'VitePress plugin for Mermaid diagram preview with fullscreen, zoom, and pan support',
 
   lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
 
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
-  ],
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
 
   themeConfig: {
     logo: '/logo.svg',
@@ -74,7 +73,8 @@ export default defineConfig({
           copyright: 'Copyright © 2025-present Huidong Luo'
         },
         editLink: {
-          pattern: 'https://github.com/unify-js/vitepress-plugin-mermaid-preview/edit/main/docs/:path',
+          pattern:
+            'https://github.com/unify-js/vitepress-plugin-mermaid-preview/edit/main/docs/:path',
           text: 'Edit this page on GitHub'
         },
         docFooter: {
@@ -142,7 +142,8 @@ export default defineConfig({
           copyright: 'Copyright © 2025-present Huidong Luo'
         },
         editLink: {
-          pattern: 'https://github.com/unify-js/vitepress-plugin-mermaid-preview/edit/main/docs/:path',
+          pattern:
+            'https://github.com/unify-js/vitepress-plugin-mermaid-preview/edit/main/docs/:path',
           text: '在 GitHub 上编辑此页面'
         },
         docFooter: {
@@ -166,8 +167,8 @@ export default defineConfig({
   },
 
   markdown: {
-    config: (md) => {
-      mermaidMarkdownPlugin(md)
+    config: md => {
+      mermaidMarkdownPlugin(md);
     }
   }
-})
+});

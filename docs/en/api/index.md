@@ -6,14 +6,14 @@ Complete API reference for VitePress Mermaid.
 
 The plugin provides multiple entry points for different use cases:
 
-| Import Path | Description |
-|-------------|-------------|
-| `@unify-js/vitepress-plugin-mermaid` | Main entry with all composables and plugins |
-| `@unify-js/vitepress-plugin-mermaid/theme` | Theme configuration helper |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown` | Markdown-it plugin |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue` | Mermaid component |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview modal component |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State composable |
+| Import Path                                                        | Description                                 |
+| ------------------------------------------------------------------ | ------------------------------------------- |
+| `@unify-js/vitepress-plugin-mermaid`                               | Main entry with all composables and plugins |
+| `@unify-js/vitepress-plugin-mermaid/theme`                         | Theme configuration helper                  |
+| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | Markdown-it plugin                          |
+| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid component                           |
+| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview modal component                     |
+| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State composable                            |
 
 ## Main Exports
 
@@ -22,7 +22,7 @@ The plugin provides multiple entry points for different use cases:
 Default theme export for easy integration:
 
 ```typescript
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 ```
 
 ### `mermaidMarkdownPlugin`
@@ -30,7 +30,7 @@ import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
 Markdown-it plugin for processing Mermaid code blocks:
 
 ```typescript
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
 ### `enhanceAppWithMermaid`
@@ -38,7 +38,7 @@ import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
 Helper function to register components in your theme:
 
 ```typescript
-import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid'
+import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
 ### `useMermaidPreview`
@@ -46,7 +46,7 @@ import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid'
 Composable for controlling the preview state:
 
 ```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
 ## Modules

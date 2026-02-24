@@ -7,18 +7,18 @@
 `mermaidMarkdownPlugin` 函数接受一个可选的配置对象：
 
 ```typescript
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
+    config: md => {
       mermaidMarkdownPlugin(md, {
         // 配置选项
-      })
+      });
     }
   }
-})
+});
 ```
 
 ## 组件属性
@@ -27,9 +27,9 @@ export default defineConfig({
 
 `Mermaid` 组件接受以下属性：
 
-| 属性 | 类型 | 默认值 | 描述 |
-|------|------|---------|-------------|
-| `code` | `string` | - | 要渲染的 Mermaid 图表代码 |
+| 属性   | 类型     | 默认值 | 描述                      |
+| ------ | -------- | ------ | ------------------------- |
+| `code` | `string` | -      | 要渲染的 Mermaid 图表代码 |
 
 使用示例：
 
@@ -38,7 +38,7 @@ export default defineConfig({
 const diagramCode = `
 graph TD
   A[开始] --> B[结束]
-`
+`;
 </script>
 
 <template>
@@ -106,9 +106,9 @@ graph TD
 /// <reference types="vite/client" />
 
 declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 ```
 
@@ -119,17 +119,17 @@ declare module '*.vue' {
 如果您有自定义的 VitePress 主题，可以集成插件组件：
 
 ```typescript
-import type { Theme } from 'vitepress'
-import CustomTheme from './CustomTheme.vue'
-import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid'
+import type { Theme } from 'vitepress';
+import CustomTheme from './CustomTheme.vue';
+import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid';
 
 export default {
   extends: CustomTheme,
   enhanceApp(ctx) {
     // 您的自定义增强
-    enhanceAppWithMermaid(ctx)
+    enhanceAppWithMermaid(ctx);
   }
-} as Theme
+} as Theme;
 ```
 
 ### 程序化控制
@@ -138,13 +138,13 @@ export default {
 
 ```vue
 <script setup>
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 
 // 使用自定义 SVG 打开预览
 function showDiagram() {
-  open('<svg>...</svg>')
+  open('<svg>...</svg>');
 }
 </script>
 ```

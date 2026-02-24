@@ -5,9 +5,9 @@
 ## 导入
 
 ```typescript
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 // 或
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
 ## 配置
@@ -16,16 +16,16 @@ import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
 
 ```typescript
 // .vitepress/config.ts
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
-      mermaidMarkdownPlugin(md)
+    config: md => {
+      mermaidMarkdownPlugin(md);
     }
   }
-})
+});
 ```
 
 ## 支持的代码块
@@ -53,6 +53,7 @@ graph TD
 ````
 
 这会渲染为：
+
 - 可点击预览的 Mermaid 图表
 - 显示源代码的代码块
 

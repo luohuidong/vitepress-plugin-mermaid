@@ -37,16 +37,16 @@ pnpm add -D vitepress mermaid vue
 Create or edit your `.vitepress/config.ts` file:
 
 ```typescript
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
-      mermaidMarkdownPlugin(md)
+    config: md => {
+      mermaidMarkdownPlugin(md);
     }
   }
-})
+});
 ```
 
 ### Step 2: Configure the Theme (Choose One)
@@ -56,12 +56,12 @@ export default defineConfig({
 The easiest way to integrate is by extending the plugin's theme:
 
 ```typescript
-import type { Theme } from 'vitepress'
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
+import type { Theme } from 'vitepress';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 
 export default {
   extends: mermaidPluginTheme
-} as Theme
+} as Theme;
 ```
 
 #### Option B: Manual Configuration
@@ -69,24 +69,24 @@ export default {
 For more control, manually register the components:
 
 ```typescript
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import { h } from 'vue';
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Mermaid', Mermaid)
-    app.component('MermaidPreview', MermaidPreview)
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => h(MermaidPreview)
-    })
+    });
   }
-} as Theme
+} as Theme;
 ```
 
 ## Usage

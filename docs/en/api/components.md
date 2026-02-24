@@ -9,25 +9,25 @@ Renders a Mermaid diagram from code.
 ### Import
 
 ```typescript
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 ```
 
 ### Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `code` | `string` | Yes | The Mermaid diagram code |
+| Prop   | Type     | Required | Description              |
+| ------ | -------- | -------- | ------------------------ |
+| `code` | `string` | Yes      | The Mermaid diagram code |
 
 ### Usage
 
 ```vue
 <script setup>
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 
 const diagramCode = `
 graph TD
   A[Start] --> B[End]
-`
+`;
 </script>
 
 <template>
@@ -49,7 +49,7 @@ The fullscreen preview modal component.
 ### Import
 
 ```typescript
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 ```
 
 ### Usage
@@ -58,19 +58,19 @@ This component is typically registered globally via the theme:
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { h } from 'vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import { h } from 'vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => h(MermaidPreview)
-    })
+    });
   }
-} as Theme
+} as Theme;
 ```
 
 ### Features
@@ -88,9 +88,9 @@ export default {
 The component reads from the global state managed by `useMermaidPreview`:
 
 ```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg } = useMermaidPreview()
+const { isOpen, svg } = useMermaidPreview();
 
 // MermaidPreview uses these to determine visibility and content
 ```
@@ -101,37 +101,37 @@ const { isOpen, svg } = useMermaidPreview()
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
+import type { Theme } from 'vitepress';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 
 export default {
   extends: mermaidPluginTheme
-} as Theme
+} as Theme;
 ```
 
 Or manually:
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Mermaid', Mermaid)
-    app.component('MermaidPreview', MermaidPreview)
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
   }
-} as Theme
+} as Theme;
 ```
 
 ### Local Usage
 
 ```vue
 <script setup>
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 </script>
 
 <template>
@@ -148,8 +148,8 @@ Both components include TypeScript declarations. For `.vue` file support, ensure
 /// <reference types="vite/client" />
 
 declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 ```

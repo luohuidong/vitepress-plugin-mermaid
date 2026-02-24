@@ -40,7 +40,12 @@
         </div>
 
         <!-- 图表容器 -->
-        <div ref="canvasRef" class="mermaid-preview-canvas" @wheel="handleWheel" @mousedown="handleMouseDown">
+        <div
+          ref="canvasRef"
+          class="mermaid-preview-canvas"
+          @wheel="handleWheel"
+          @mousedown="handleMouseDown"
+        >
           <div ref="contentRef" class="mermaid-preview-content" v-html="svg" />
         </div>
 
@@ -52,8 +57,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from "vue";
-import { useMermaidPreview } from "../composables/useMermaidPreview";
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { useMermaidPreview } from '../composables/useMermaidPreview';
 
 const { isOpen, svg, close } = useMermaidPreview();
 
@@ -152,12 +157,12 @@ function handleMouseDown(e: MouseEvent) {
   // 添加拖拽时的样式
   const content = contentRef.value;
   if (content) {
-    content.style.cursor = "grabbing";
+    content.style.cursor = 'grabbing';
   }
 
   // 添加全局鼠标事件监听
-  document.addEventListener("mousemove", handleGlobalMouseMove);
-  document.addEventListener("mouseup", handleGlobalMouseUp);
+  document.addEventListener('mousemove', handleGlobalMouseMove);
+  document.addEventListener('mouseup', handleGlobalMouseUp);
 }
 
 // 拖拽移动 (全局)
@@ -180,12 +185,12 @@ function handleGlobalMouseUp() {
 
   const content = contentRef.value;
   if (content) {
-    content.style.cursor = "grab";
+    content.style.cursor = 'grab';
   }
 
   // 清理全局事件
-  document.removeEventListener("mousemove", handleGlobalMouseMove);
-  document.removeEventListener("mouseup", handleGlobalMouseUp);
+  document.removeEventListener('mousemove', handleGlobalMouseMove);
+  document.removeEventListener('mouseup', handleGlobalMouseUp);
 }
 
 // 点击遮罩关闭
@@ -198,23 +203,23 @@ function handleKeydown(e: KeyboardEvent) {
   if (!isOpen.value) return;
 
   switch (e.key) {
-    case "Escape":
+    case 'Escape':
       close();
       break;
-    case "+":
-    case "=":
+    case '+':
+    case '=':
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         zoomIn();
       }
       break;
-    case "-":
+    case '-':
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         zoomOut();
       }
       break;
-    case "0":
+    case '0':
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         resetZoom();
@@ -226,7 +231,7 @@ function handleKeydown(e: KeyboardEvent) {
 // 监听打开状态，重置变换
 watch(
   () => isOpen.value,
-  (open) => {
+  open => {
     if (open) {
       scale = 2;
       translateX = 0;
@@ -236,25 +241,25 @@ watch(
       requestAnimationFrame(() => {
         const content = contentRef.value;
         if (content) {
-          content.style.transformOrigin = "center center";
-          content.style.cursor = "grab";
+          content.style.transformOrigin = 'center center';
+          content.style.cursor = 'grab';
           applyTransform();
         }
       });
     }
-  },
+  }
 );
 
 onMounted(() => {
   // 键盘事件
-  document.addEventListener("keydown", handleKeydown);
+  document.addEventListener('keydown', handleKeydown);
 });
 
 onUnmounted(() => {
-  document.removeEventListener("keydown", handleKeydown);
+  document.removeEventListener('keydown', handleKeydown);
   // 清理可能残留的全局鼠标事件
-  document.removeEventListener("mousemove", handleGlobalMouseMove);
-  document.removeEventListener("mouseup", handleGlobalMouseUp);
+  document.removeEventListener('mousemove', handleGlobalMouseMove);
+  document.removeEventListener('mouseup', handleGlobalMouseUp);
 });
 </script>
 

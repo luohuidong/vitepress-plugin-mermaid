@@ -4,31 +4,31 @@ VitePress Mermaid provides intuitive keyboard shortcuts for efficient diagram na
 
 ## Available Shortcuts
 
-| Shortcut | Action | Description |
-|----------|--------|-------------|
-| `ESC` | Close Preview | Closes the fullscreen preview modal |
-| `Ctrl/Cmd + +` | Zoom In | Increases the zoom level |
-| `Ctrl/Cmd + -` | Zoom Out | Decreases the zoom level |
-| `Ctrl/Cmd + 0` | Reset Zoom | Resets to the original zoom level |
+| Shortcut       | Action        | Description                         |
+| -------------- | ------------- | ----------------------------------- |
+| `ESC`          | Close Preview | Closes the fullscreen preview modal |
+| `Ctrl/Cmd + +` | Zoom In       | Increases the zoom level            |
+| `Ctrl/Cmd + -` | Zoom Out      | Decreases the zoom level            |
+| `Ctrl/Cmd + 0` | Reset Zoom    | Resets to the original zoom level   |
 
 ## Mouse Interactions
 
-| Action | Function |
-|--------|----------|
-| **Click** diagram | Opens fullscreen preview |
-| **Scroll wheel** | Zoom in/out at cursor position |
-| **Drag** | Pan around when zoomed in |
-| **Click X button** | Close preview |
-| **Click backdrop** | Close preview |
+| Action             | Function                       |
+| ------------------ | ------------------------------ |
+| **Click** diagram  | Opens fullscreen preview       |
+| **Scroll wheel**   | Zoom in/out at cursor position |
+| **Drag**           | Pan around when zoomed in      |
+| **Click X button** | Close preview                  |
+| **Click backdrop** | Close preview                  |
 
 ## Touch Gestures (Mobile)
 
-| Gesture | Function |
-|---------|----------|
-| **Tap** diagram | Opens fullscreen preview |
-| **Pinch** | Zoom in/out |
-| **Swipe** | Pan around when zoomed in |
-| **Tap X button** | Close preview |
+| Gesture          | Function                  |
+| ---------------- | ------------------------- |
+| **Tap** diagram  | Opens fullscreen preview  |
+| **Pinch**        | Zoom in/out               |
+| **Swipe**        | Pan around when zoomed in |
+| **Tap X button** | Close preview             |
 
 ## Usage Examples
 
@@ -75,6 +75,7 @@ All keyboard shortcuts are designed to be:
 ### Focus Management
 
 When the preview opens:
+
 - Focus moves to the modal container
 - `Tab` navigation is trapped within the modal
 - Pressing `ESC` returns focus to the trigger element

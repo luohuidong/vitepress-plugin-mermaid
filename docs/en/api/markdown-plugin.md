@@ -5,9 +5,9 @@ The markdown-it plugin that transforms Mermaid code blocks into interactive comp
 ## Import
 
 ```typescript
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 // or
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
 ## Configuration
@@ -16,16 +16,16 @@ import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid'
 
 ```typescript
 // .vitepress/config.ts
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
-      mermaidMarkdownPlugin(md)
+    config: md => {
+      mermaidMarkdownPlugin(md);
     }
   }
-})
+});
 ```
 
 ## Supported Code Blocks
@@ -53,6 +53,7 @@ graph TD
 ````
 
 This renders as:
+
 - The Mermaid diagram (clickable for preview)
 - A code block showing the source
 

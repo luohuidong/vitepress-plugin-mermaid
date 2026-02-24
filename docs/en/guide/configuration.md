@@ -7,18 +7,18 @@ Learn how to customize VitePress Mermaid for your needs.
 The `mermaidMarkdownPlugin` function accepts an optional configuration object:
 
 ```typescript
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
+    config: md => {
       mermaidMarkdownPlugin(md, {
         // Configuration options
-      })
+      });
     }
   }
-})
+});
 ```
 
 ## Component Props
@@ -27,9 +27,9 @@ export default defineConfig({
 
 The `Mermaid` component accepts the following props:
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `code` | `string` | - | The Mermaid diagram code to render |
+| Prop   | Type     | Default | Description                        |
+| ------ | -------- | ------- | ---------------------------------- |
+| `code` | `string` | -       | The Mermaid diagram code to render |
 
 Example usage:
 
@@ -38,7 +38,7 @@ Example usage:
 const diagramCode = `
 graph TD
   A[Start] --> B[End]
-`
+`;
 </script>
 
 <template>
@@ -106,9 +106,9 @@ Or create an `env.d.ts` file:
 /// <reference types="vite/client" />
 
 declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 ```
 
@@ -119,17 +119,17 @@ declare module '*.vue' {
 If you have a custom VitePress theme, you can integrate the plugin components:
 
 ```typescript
-import type { Theme } from 'vitepress'
-import CustomTheme from './CustomTheme.vue'
-import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid'
+import type { Theme } from 'vitepress';
+import CustomTheme from './CustomTheme.vue';
+import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid';
 
 export default {
   extends: CustomTheme,
   enhanceApp(ctx) {
     // Your custom enhancements
-    enhanceAppWithMermaid(ctx)
+    enhanceAppWithMermaid(ctx);
   }
-} as Theme
+} as Theme;
 ```
 
 ### Programmatic Control
@@ -138,13 +138,13 @@ Use the `useMermaidPreview` composable for programmatic control:
 
 ```vue
 <script setup>
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 
 // Open preview with custom SVG
 function showDiagram() {
-  open('<svg>...</svg>')
+  open('<svg>...</svg>');
 }
 </script>
 ```

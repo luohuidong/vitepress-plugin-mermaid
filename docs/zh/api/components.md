@@ -9,25 +9,25 @@
 ### 导入
 
 ```typescript
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 ```
 
 ### 属性
 
-| 属性 | 类型 | 必填 | 描述 |
-|------|------|----------|-------------|
-| `code` | `string` | 是 | Mermaid 图表代码 |
+| 属性   | 类型     | 必填 | 描述             |
+| ------ | -------- | ---- | ---------------- |
+| `code` | `string` | 是   | Mermaid 图表代码 |
 
 ### 用法
 
 ```vue
 <script setup>
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 
 const diagramCode = `
 graph TD
   A[开始] --> B[结束]
-`
+`;
 </script>
 
 <template>
@@ -49,7 +49,7 @@ graph TD
 ### 导入
 
 ```typescript
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 ```
 
 ### 用法
@@ -58,19 +58,19 @@ import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/Mermai
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { h } from 'vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import { h } from 'vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => h(MermaidPreview)
-    })
+    });
   }
-} as Theme
+} as Theme;
 ```
 
 ### 功能
@@ -88,9 +88,9 @@ export default {
 该组件从 `useMermaidPreview` 管理的全局状态中读取：
 
 ```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg } = useMermaidPreview()
+const { isOpen, svg } = useMermaidPreview();
 
 // MermaidPreview 使用这些来确定可见性和内容
 ```
@@ -101,37 +101,37 @@ const { isOpen, svg } = useMermaidPreview()
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
+import type { Theme } from 'vitepress';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 
 export default {
   extends: mermaidPluginTheme
-} as Theme
+} as Theme;
 ```
 
 或手动：
 
 ```typescript
 // .vitepress/theme/index.ts
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Mermaid', Mermaid)
-    app.component('MermaidPreview', MermaidPreview)
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
   }
-} as Theme
+} as Theme;
 ```
 
 ### 本地使用
 
 ```vue
 <script setup>
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
 </script>
 
 <template>
@@ -148,8 +148,8 @@ import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
 /// <reference types="vite/client" />
 
 declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 ```

@@ -37,16 +37,16 @@ pnpm add -D vitepress mermaid vue
 创建或编辑您的 `.vitepress/config.ts` 文件：
 
 ```typescript
-import { defineConfig } from 'vitepress'
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown'
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
-      mermaidMarkdownPlugin(md)
+    config: md => {
+      mermaidMarkdownPlugin(md);
     }
   }
-})
+});
 ```
 
 ### 第二步：配置主题（二选一）
@@ -56,12 +56,12 @@ export default defineConfig({
 最简单的集成方式是通过扩展插件的主题：
 
 ```typescript
-import type { Theme } from 'vitepress'
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme'
+import type { Theme } from 'vitepress';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 
 export default {
   extends: mermaidPluginTheme
-} as Theme
+} as Theme;
 ```
 
 #### 选项 B：手动配置
@@ -69,24 +69,24 @@ export default {
 如需更多控制，请手动注册组件：
 
 ```typescript
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue'
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue'
+import { h } from 'vue';
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Mermaid', Mermaid)
-    app.component('MermaidPreview', MermaidPreview)
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => h(MermaidPreview)
-    })
+    });
   }
-} as Theme
+} as Theme;
 ```
 
 ## 使用

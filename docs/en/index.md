@@ -29,14 +29,14 @@ graph TD
 
 ## Why Use This Plugin?
 
-| Feature | Benefit |
-|---------|---------|
-| **Fullscreen Preview** | View complex diagrams without scrolling |
-| **Zoom Controls** | Examine details in large diagrams |
-| **Pan/Drag** | Navigate around extensive diagrams easily |
-| **Keyboard Shortcuts** | Quick and efficient control |
-| **Dark Mode** | Seamless theme switching |
-| **Mobile Support** | Touch gestures on mobile devices |
+| Feature                | Benefit                                   |
+| ---------------------- | ----------------------------------------- |
+| **Fullscreen Preview** | View complex diagrams without scrolling   |
+| **Zoom Controls**      | Examine details in large diagrams         |
+| **Pan/Drag**           | Navigate around extensive diagrams easily |
+| **Keyboard Shortcuts** | Quick and efficient control               |
+| **Dark Mode**          | Seamless theme switching                  |
+| **Mobile Support**     | Touch gestures on mobile devices          |
 
 ## Next Steps
 

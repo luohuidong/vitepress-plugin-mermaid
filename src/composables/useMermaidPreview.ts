@@ -1,14 +1,14 @@
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue';
 
 interface PreviewState {
-  isOpen: boolean
-  svg: string
+  isOpen: boolean;
+  svg: string;
 }
 
 const state = ref<PreviewState>({
   isOpen: false,
   svg: ''
-})
+});
 
 /**
  * Mermaid 预览状态管理
@@ -20,28 +20,28 @@ export function useMermaidPreview() {
    * @param svgContent - 要预览的 SVG 内容
    */
   const open = (svgContent: string) => {
-    state.value.svg = svgContent
-    state.value.isOpen = true
+    state.value.svg = svgContent;
+    state.value.isOpen = true;
     // 禁止背景滚动
-    document.body.style.overflow = 'hidden'
-  }
+    document.body.style.overflow = 'hidden';
+  };
 
   /**
    * 关闭预览
    */
   const close = () => {
-    state.value.isOpen = false
-    state.value.svg = ''
+    state.value.isOpen = false;
+    state.value.svg = '';
     // 恢复背景滚动
-    document.body.style.overflow = ''
-  }
+    document.body.style.overflow = '';
+  };
 
   return {
     isOpen: computed(() => state.value.isOpen),
     svg: computed(() => state.value.svg),
     open,
     close
-  }
+  };
 }
 
-export default useMermaidPreview
+export default useMermaidPreview;

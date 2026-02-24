@@ -5,9 +5,9 @@ A Vue composable for programmatic control of the Mermaid preview modal.
 ## Usage
 
 ```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 ```
 
 ## Returns
@@ -20,7 +20,7 @@ const { isOpen, svg, open, close } = useMermaidPreview()
 ```typescript
 // Check if preview is open
 if (isOpen.value) {
-  console.log('Preview is currently open')
+  console.log('Preview is currently open');
 }
 ```
 
@@ -31,7 +31,7 @@ if (isOpen.value) {
 
 ```typescript
 // Get current SVG content
-const currentSvg = svg.value
+const currentSvg = svg.value;
 ```
 
 ### `open`
@@ -41,11 +41,11 @@ const currentSvg = svg.value
 
 ```typescript
 // Open preview with SVG string
-open('<svg>...</svg>')
+open('<svg>...</svg>');
 
 // Or with a variable
-const diagramSvg = '<svg><!-- diagram content --></svg>'
-open(diagramSvg)
+const diagramSvg = '<svg><!-- diagram content --></svg>';
+open(diagramSvg);
 ```
 
 ### `close`
@@ -55,39 +55,37 @@ open(diagramSvg)
 
 ```typescript
 // Close the preview
-close()
+close();
 ```
 
 ## Complete Example
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { ref } from 'vue';
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 const customSvg = ref(`
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="40" fill="#bd34fe" />
     <text x="50" y="55" text-anchor="middle" fill="white">Hello</text>
   </svg>
-`)
+`);
 
 function showCustomDiagram() {
-  open(customSvg.value)
+  open(customSvg.value);
 }
 
 function handleClose() {
-  console.log('Preview closed, SVG was:', svg.value)
-  close()
+  console.log('Preview closed, SVG was:', svg.value);
+  close();
 }
 </script>
 
 <template>
   <div>
-    <button @click="showCustomDiagram">
-      Show Custom Diagram
-    </button>
+    <button @click="showCustomDiagram">Show Custom Diagram</button>
     <p>Preview is {{ isOpen ? 'open' : 'closed' }}</p>
   </div>
 </template>
@@ -104,11 +102,11 @@ The composable uses a global state, meaning:
 ```vue
 <script setup lang="ts">
 // Component A
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
-const { open } = useMermaidPreview()
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
+const { open } = useMermaidPreview();
 
 function openFromA() {
-  open('<svg>A</svg>')
+  open('<svg>A</svg>');
 }
 </script>
 ```
@@ -116,8 +114,8 @@ function openFromA() {
 ```vue
 <script setup lang="ts">
 // Component B (elsewhere in the app)
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
-const { isOpen, svg } = useMermaidPreview()
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
+const { isOpen, svg } = useMermaidPreview();
 
 // These will react to changes from Component A
 // isOpen and svg will update when Component A calls open()
@@ -128,11 +126,11 @@ const { isOpen, svg } = useMermaidPreview()
 
 ```typescript
 interface UseMermaidPreviewReturn {
-  isOpen: ComputedRef<boolean>
-  svg: ComputedRef<string>
-  open: (svgContent: string) => void
-  close: () => void
+  isOpen: ComputedRef<boolean>;
+  svg: ComputedRef<string>;
+  open: (svgContent: string) => void;
+  close: () => void;
 }
 
-declare function useMermaidPreview(): UseMermaidPreviewReturn
+declare function useMermaidPreview(): UseMermaidPreviewReturn;
 ```

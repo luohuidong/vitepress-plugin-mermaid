@@ -28,11 +28,11 @@ yarn add @unify-js/vitepress-plugin-mermaid
 In `.vitepress/theme/index.ts`:
 
 ```typescript
-import type { Theme } from "vitepress";
-import mermaidPluginTheme from "@unify-js/vitepress-plugin-mermaid/theme";
+import type { Theme } from 'vitepress';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
 
 export default {
-  extends: mermaidPluginTheme,
+  extends: mermaidPluginTheme
 } as Theme;
 ```
 
@@ -41,23 +41,23 @@ export default {
 For more flexible control, you can configure manually:
 
 ```typescript
-import { h } from "vue";
-import type { Theme } from "vitepress";
-import DefaultTheme from "vitepress/theme";
-import Mermaid from "@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue";
-import MermaidPreview from "@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue";
+import { h } from 'vue';
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
+import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component("Mermaid", Mermaid);
-    app.component("MermaidPreview", MermaidPreview);
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      "layout-bottom": () => h(MermaidPreview),
+      'layout-bottom': () => h(MermaidPreview)
     });
-  },
+  }
 } as Theme;
 ```
 
@@ -66,15 +66,15 @@ export default {
 In `.vitepress/config.ts`:
 
 ```typescript
-import { defineConfig } from "vitepress";
-import { mermaidMarkdownPlugin } from "@unify-js/vitepress-plugin-mermaid/mermaid-markdown";
+import { defineConfig } from 'vitepress';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
 
 export default defineConfig({
   markdown: {
-    config: (md) => {
+    config: md => {
       mermaidMarkdownPlugin(md);
-    },
-  },
+    }
+  }
 });
 ```
 
@@ -111,44 +111,44 @@ graph LR
 Composable for controlling the preview window.
 
 ```typescript
-import { useMermaidPreview } from "@unify-js/vitepress-plugin-mermaid";
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
 const { isOpen, svg, open, close } = useMermaidPreview();
 
 // Open preview
-open("<svg>...</svg>");
+open('<svg>...</svg>');
 
 // Close preview
 close();
 ```
 
-| Property/Method | Type | Description |
-| --------- | ----------------------- | ------------------- |
-| `isOpen` | `ComputedRef<boolean>` | Whether the preview window is open |
-| `svg` | `ComputedRef<string>` | Current preview SVG content |
-| `open` | `(svg: string) => void` | Open preview window |
-| `close` | `() => void` | Close preview window |
+| Property/Method | Type                    | Description                        |
+| --------------- | ----------------------- | ---------------------------------- |
+| `isOpen`        | `ComputedRef<boolean>`  | Whether the preview window is open |
+| `svg`           | `ComputedRef<string>`   | Current preview SVG content        |
+| `open`          | `(svg: string) => void` | Open preview window                |
+| `close`         | `() => void`            | Close preview window               |
 
 ### mermaidMarkdownPlugin
 
 markdown-it plugin that converts mermaid code blocks to Vue components.
 
 ```typescript
-import { mermaidMarkdownPlugin } from "@unify-js/vitepress-plugin-mermaid";
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 
 md.use(mermaidMarkdownPlugin);
 ```
 
 ## Keyboard Shortcuts
 
-| Shortcut | Function |
-| -------------- | ------------ |
-| `ESC` | Close preview window |
-| `Ctrl/Cmd + +` | Zoom in |
-| `Ctrl/Cmd + -` | Zoom out |
-| `Ctrl/Cmd + 0` | Reset zoom |
-| `Mouse wheel` | Zoom |
-| `Drag` | Move diagram |
+| Shortcut       | Function             |
+| -------------- | -------------------- |
+| `ESC`          | Close preview window |
+| `Ctrl/Cmd + +` | Zoom in              |
+| `Ctrl/Cmd + -` | Zoom out             |
+| `Ctrl/Cmd + 0` | Reset zoom           |
+| `Mouse wheel`  | Zoom                 |
+| `Drag`         | Move diagram         |
 
 ## FAQ
 
@@ -169,8 +169,8 @@ Create an `env.d.ts` file in your project root (or `src` directory):
 ```typescript
 /// <reference types="vite/client" />
 
-declare module "*.vue" {
-  import type { DefineComponent } from "vue";
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue';
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }

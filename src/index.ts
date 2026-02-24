@@ -1,12 +1,12 @@
 // Composables
-export { useMermaidPreview } from "./composables/useMermaidPreview";
+export { useMermaidPreview } from './composables/useMermaidPreview';
 
 // Markdown plugin
-export { mermaidMarkdownPlugin } from "./mermaid-markdown";
+export { mermaidMarkdownPlugin } from './mermaid-markdown';
 
 // Theme helper
-export { default as mermaidPluginTheme } from "./theme";
-export { default } from "./theme";
+export { default as mermaidPluginTheme } from './theme';
+export { default } from './theme';
 
 // Note: Vue components (Mermaid.vue, MermaidPreview.vue) are not bundled.
 // They are copied as-is to dist/components/ and should be imported directly:

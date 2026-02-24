@@ -3,7 +3,13 @@
     <div v-if="error" class="mermaid-error">
       <pre>{{ error }}</pre>
     </div>
-    <div v-else-if="svg" class="mermaid-svg" :class="{ 'is-clickable': true }" @click="handleClick" v-html="svg"></div>
+    <div
+      v-else-if="svg"
+      class="mermaid-svg"
+      :class="{ 'is-clickable': true }"
+      @click="handleClick"
+      v-html="svg"
+    ></div>
     <div v-else class="mermaid-loading">Loading diagram...</div>
 
     <!-- 点击提示 -->
@@ -23,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue";
-import { useData } from "vitepress";
-import mermaid from "mermaid";
-import { useMermaidPreview } from "../composables/useMermaidPreview";
+import { ref, computed, onMounted, watch } from 'vue';
+import { useData } from 'vitepress';
+import mermaid from 'mermaid';
+import { useMermaidPreview } from '../composables/useMermaidPreview';
 
 interface Props {
   id: string;
@@ -35,12 +41,12 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  showCode: false,
+  showCode: false
 });
 
 const container = ref<HTMLElement>();
-const svg = ref("");
-const error = ref("");
+const svg = ref('');
+const error = ref('');
 const { isDark } = useData();
 const { open } = useMermaidPreview();
 
@@ -52,20 +58,20 @@ const renderMermaid = async () => {
   if (!container.value) return;
 
   try {
-    error.value = "";
+    error.value = '';
 
     // 初始化 mermaid 配置
     mermaid.initialize({
-      theme: isDark.value ? "dark" : "default",
+      theme: isDark.value ? 'dark' : 'default',
       themeVariables: {
-        primaryColor: isDark.value ? "#1e3a5f" : "#e1f5fe",
-        primaryTextColor: isDark.value ? "#ffffff" : "#01579b",
-        primaryBorderColor: isDark.value ? "#4a90d9" : "#0288d1",
-        lineColor: isDark.value ? "#4a90d9" : "#0288d1",
-        secondaryColor: isDark.value ? "#4a3d2a" : "#fff3e0",
-        tertiaryColor: isDark.value ? "#2d4a2d" : "#e8f5e9",
+        primaryColor: isDark.value ? '#1e3a5f' : '#e1f5fe',
+        primaryTextColor: isDark.value ? '#ffffff' : '#01579b',
+        primaryBorderColor: isDark.value ? '#4a90d9' : '#0288d1',
+        lineColor: isDark.value ? '#4a90d9' : '#0288d1',
+        secondaryColor: isDark.value ? '#4a3d2a' : '#fff3e0',
+        tertiaryColor: isDark.value ? '#2d4a2d' : '#e8f5e9'
       },
-      startOnLoad: false,
+      startOnLoad: false
     });
 
     // 渲染图表
@@ -73,7 +79,7 @@ const renderMermaid = async () => {
     svg.value = renderedSvg;
   } catch (err) {
     error.value = err instanceof Error ? err.message : String(err);
-    console.error("Mermaid render error:", err);
+    console.error('Mermaid render error:', err);
   }
 };
 

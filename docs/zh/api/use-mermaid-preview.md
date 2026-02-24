@@ -5,9 +5,9 @@
 ## 用法
 
 ```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 ```
 
 ## 返回值
@@ -20,7 +20,7 @@ const { isOpen, svg, open, close } = useMermaidPreview()
 ```typescript
 // 检查预览是否打开
 if (isOpen.value) {
-  console.log('预览当前已打开')
+  console.log('预览当前已打开');
 }
 ```
 
@@ -31,7 +31,7 @@ if (isOpen.value) {
 
 ```typescript
 // 获取当前 SVG 内容
-const currentSvg = svg.value
+const currentSvg = svg.value;
 ```
 
 ### `open`
@@ -41,11 +41,11 @@ const currentSvg = svg.value
 
 ```typescript
 // 使用 SVG 字符串打开预览
-open('<svg>...</svg>')
+open('<svg>...</svg>');
 
 // 或使用变量
-const diagramSvg = '<svg><!-- 图表内容 --></svg>'
-open(diagramSvg)
+const diagramSvg = '<svg><!-- 图表内容 --></svg>';
+open(diagramSvg);
 ```
 
 ### `close`
@@ -55,39 +55,37 @@ open(diagramSvg)
 
 ```typescript
 // 关闭预览
-close()
+close();
 ```
 
 ## 完整示例
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
+import { ref } from 'vue';
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
-const { isOpen, svg, open, close } = useMermaidPreview()
+const { isOpen, svg, open, close } = useMermaidPreview();
 const customSvg = ref(`
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="40" fill="#bd34fe" />
     <text x="50" y="55" text-anchor="middle" fill="white">你好</text>
   </svg>
-`)
+`);
 
 function showCustomDiagram() {
-  open(customSvg.value)
+  open(customSvg.value);
 }
 
 function handleClose() {
-  console.log('预览已关闭，SVG 是:', svg.value)
-  close()
+  console.log('预览已关闭，SVG 是:', svg.value);
+  close();
 }
 </script>
 
 <template>
   <div>
-    <button @click="showCustomDiagram">
-      显示自定义图表
-    </button>
+    <button @click="showCustomDiagram">显示自定义图表</button>
     <p>预览状态: {{ isOpen ? '打开' : '关闭' }}</p>
   </div>
 </template>
@@ -104,11 +102,11 @@ function handleClose() {
 ```vue
 <script setup lang="ts">
 // 组件 A
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
-const { open } = useMermaidPreview()
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
+const { open } = useMermaidPreview();
 
 function openFromA() {
-  open('<svg>A</svg>')
+  open('<svg>A</svg>');
 }
 </script>
 ```
@@ -116,8 +114,8 @@ function openFromA() {
 ```vue
 <script setup lang="ts">
 // 组件 B（应用中的其他地方）
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid'
-const { isOpen, svg } = useMermaidPreview()
+import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
+const { isOpen, svg } = useMermaidPreview();
 
 // 这些将对组件 A 的更改作出反应
 // 当组件 A 调用 open() 时，isOpen 和 svg 会更新
@@ -128,11 +126,11 @@ const { isOpen, svg } = useMermaidPreview()
 
 ```typescript
 interface UseMermaidPreviewReturn {
-  isOpen: ComputedRef<boolean>
-  svg: ComputedRef<string>
-  open: (svgContent: string) => void
-  close: () => void
+  isOpen: ComputedRef<boolean>;
+  svg: ComputedRef<string>;
+  open: (svgContent: string) => void;
+  close: () => void;
 }
 
-declare function useMermaidPreview(): UseMermaidPreviewReturn
+declare function useMermaidPreview(): UseMermaidPreviewReturn;
 ```

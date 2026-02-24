@@ -38,14 +38,14 @@ packages/vitepress-plugin-mermaid-preview/
 
 ### 导出路径
 
-| 导入路径 | 描述 |
-| -------------------------------------------------------------------------- | --------------------------------------- |
-| `@unify-js/vitepress-plugin-mermaid` | 主入口，导出 `mermaidMarkdownPlugin` 等 |
-| `@unify-js/vitepress-plugin-mermaid/theme` | 主题配置，推荐方式 |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown` | markdown-it 插件 |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue` | Mermaid 组件 (Vue SFC) |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览组件 (Vue SFC) |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | 状态管理 composable |
+| 导入路径                                                           | 描述                                    |
+| ------------------------------------------------------------------ | --------------------------------------- |
+| `@unify-js/vitepress-plugin-mermaid`                               | 主入口，导出 `mermaidMarkdownPlugin` 等 |
+| `@unify-js/vitepress-plugin-mermaid/theme`                         | 主题配置，推荐方式                      |
+| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | markdown-it 插件                        |
+| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid 组件 (Vue SFC)                  |
+| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览组件 (Vue SFC)                      |
+| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | 状态管理 composable                     |
 
 ## 本地开发
 

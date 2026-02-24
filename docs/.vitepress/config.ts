@@ -51,7 +51,6 @@ export default defineConfig({
             base: '/en/api/',
             items: [
               { text: 'Overview', link: 'index' },
-              { text: 'useMermaidPreview', link: 'use-mermaid-preview' },
               { text: 'Components', link: 'components' },
               { text: 'Markdown Plugin', link: 'markdown-plugin' },
             ],
@@ -120,7 +119,6 @@ export default defineConfig({
             base: '/zh/api/',
             items: [
               { text: '概览', link: 'index' },
-              { text: 'useMermaidPreview', link: 'use-mermaid-preview' },
               { text: '组件', link: 'components' },
               { text: 'Markdown 插件', link: 'markdown-plugin' },
             ],

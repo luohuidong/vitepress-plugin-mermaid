@@ -28,7 +28,7 @@ This is a VitePress plugin that adds fullscreen preview functionality for Mermai
 
 **MermaidPreview.vue** - Fullscreen overlay with zoom/pan controls. Uses direct DOM manipulation for smooth interactions (avoiding Vue reactivity overhead). Teleports to body for proper layering.
 
-**useMermaidPreview.ts** - Global state management using a singleton pattern. Provides `open(svg)`, `close()`, and reactive `isOpen`/`svg` properties.
+**useMermaidPreview.ts** - Internal global state management using a singleton pattern. Provides `open(svg)`, `close()`, and reactive `isOpen`/`svg` properties. Used internally by Mermaid and MermaidPreview components, not exported to users.
 
 **mermaid-markdown.ts** - Markdown-it plugin that transforms `mermaid` and `mermaid-example` code blocks into Vue `<Mermaid>` components wrapped in `<Suspense>`.
 

@@ -13,8 +13,8 @@ packages/vitepress-plugin-mermaid-preview/
 │   │   ├── Mermaid.vue           # Diagram rendering component (Vue SFC)
 │   │   └── MermaidPreview.vue    # Fullscreen preview component (Vue SFC)
 │   ├── composables/
-│   │   └── useMermaidPreview.ts  # State management
-│   ├── index.ts                  # Main entry, exports all features
+│   │   └── useMermaidPreview.ts  # Internal state management
+│   ├── index.ts                  # Main entry, exports public features
 │   ├── theme.ts                  # Theme configuration, one-click integration
 │   └── mermaid-markdown.ts       # markdown-it plugin
 ├── dist/                         # Build output (included in publish)
@@ -28,7 +28,7 @@ packages/vitepress-plugin-mermaid-preview/
 │   │   ├── Mermaid.vue           # Vue SFC (copied)
 │   │   └── MermaidPreview.vue    # Vue SFC (copied)
 │   └── composables/
-│       ├── useMermaidPreview.js  # Compiled composable
+│       ├── useMermaidPreview.js  # Internal composable (not exported)
 │       └── useMermaidPreview.d.ts # Type declarations
 ├── package.json
 ├── tsconfig.json
@@ -45,7 +45,6 @@ packages/vitepress-plugin-mermaid-preview/
 | `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | markdown-it plugin                                |
 | `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid component (Vue SFC)                       |
 | `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview component (Vue SFC)                       |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State management composable                       |
 
 ## Local Development
 

@@ -1,6 +1,3 @@
-// Composables
-export { useMermaidPreview } from './composables/useMermaidPreview';
-
 // Markdown plugin
 export { mermaidMarkdownPlugin } from './mermaid-markdown';
 

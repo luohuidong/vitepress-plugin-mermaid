@@ -13,7 +13,6 @@ VitePress Mermaid 的完整 API 参考。
 | `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | Markdown-it 插件                 |
 | `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid 组件                     |
 | `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览模态框组件                   |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | 状态组合式函数                   |
 
 ## 主要导出
 
@@ -41,16 +40,7 @@ import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
-### `useMermaidPreview`
-
-用于控制预览状态的组合式函数：
-
-```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-```
-
 ## 模块
 
-- [useMermaidPreview](./use-mermaid-preview.md) - 状态管理组合式函数
 - [组件](./components.md) - Vue 组件参考
 - [Markdown 插件](./markdown-plugin.md) - Markdown-it 插件详情

@@ -13,7 +13,6 @@ The plugin provides multiple entry points for different use cases:
 | `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | Markdown-it plugin                          |
 | `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid component                           |
 | `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview modal component                     |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | State composable                            |
 
 ## Main Exports
 
@@ -41,16 +40,7 @@ Helper function to register components in your theme:
 import { enhanceAppWithMermaid } from '@unify-js/vitepress-plugin-mermaid';
 ```
 
-### `useMermaidPreview`
-
-Composable for controlling the preview state:
-
-```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-```
-
 ## Modules
 
-- [useMermaidPreview](./use-mermaid-preview.md) - State management composable
 - [Components](./components.md) - Vue component references
 - [Markdown Plugin](./markdown-plugin.md) - Markdown-it plugin details

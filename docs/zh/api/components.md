@@ -83,18 +83,6 @@ export default {
 - 流畅动画
 - 响应式设计
 
-### 状态管理
-
-该组件从 `useMermaidPreview` 管理的全局状态中读取：
-
-```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-
-const { isOpen, svg } = useMermaidPreview();
-
-// MermaidPreview 使用这些来确定可见性和内容
-```
-
 ## 组件注册
 
 ### 全局注册（推荐）

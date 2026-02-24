@@ -106,29 +106,6 @@ graph LR
 
 ## API Reference
 
-### useMermaidPreview
-
-Composable for controlling the preview window.
-
-```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-
-const { isOpen, svg, open, close } = useMermaidPreview();
-
-// Open preview
-open('<svg>...</svg>');
-
-// Close preview
-close();
-```
-
-| Property/Method | Type                    | Description                        |
-| --------------- | ----------------------- | ---------------------------------- |
-| `isOpen`        | `ComputedRef<boolean>`  | Whether the preview window is open |
-| `svg`           | `ComputedRef<string>`   | Current preview SVG content        |
-| `open`          | `(svg: string) => void` | Open preview window                |
-| `close`         | `() => void`            | Close preview window               |
-
 ### mermaidMarkdownPlugin
 
 markdown-it plugin that converts mermaid code blocks to Vue components.

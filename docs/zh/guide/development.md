@@ -13,7 +13,7 @@ packages/vitepress-plugin-mermaid-preview/
 │   │   ├── Mermaid.vue           # 图表渲染组件 (Vue SFC)
 │   │   └── MermaidPreview.vue    # 全屏预览组件 (Vue SFC)
 │   ├── composables/
-│   │   └── useMermaidPreview.ts  # 状态管理
+│   │   └── useMermaidPreview.ts  # 内部状态管理
 │   ├── index.ts                  # 主入口，导出所有功能
 │   ├── theme.ts                  # 主题配置，一键集成
 │   └── mermaid-markdown.ts       # markdown-it 插件
@@ -28,7 +28,7 @@ packages/vitepress-plugin-mermaid-preview/
 │   │   ├── Mermaid.vue           # Vue SFC (复制)
 │   │   └── MermaidPreview.vue    # Vue SFC (复制)
 │   └── composables/
-│       ├── useMermaidPreview.js  # 编译后的 composable
+│       ├── useMermaidPreview.js  # 内部 composable（不导出）
 │       └── useMermaidPreview.d.ts # 类型声明
 ├── package.json
 ├── tsconfig.json
@@ -45,7 +45,6 @@ packages/vitepress-plugin-mermaid-preview/
 | `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | markdown-it 插件                        |
 | `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid 组件 (Vue SFC)                  |
 | `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览组件 (Vue SFC)                      |
-| `@unify-js/vitepress-plugin-mermaid/composables/useMermaidPreview` | 状态管理 composable                     |
 
 ## 本地开发
 

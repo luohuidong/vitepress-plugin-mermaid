@@ -83,18 +83,6 @@ export default {
 - Smooth animations
 - Responsive design
 
-### State Management
-
-The component reads from the global state managed by `useMermaidPreview`:
-
-```typescript
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-
-const { isOpen, svg } = useMermaidPreview();
-
-// MermaidPreview uses these to determine visibility and content
-```
-
 ## Component Registration
 
 ### Global Registration (Recommended)

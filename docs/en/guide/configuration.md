@@ -132,23 +132,6 @@ export default {
 } satisfies Theme;
 ```
 
-### Programmatic Control
-
-Use the `useMermaidPreview` composable for programmatic control:
-
-```vue
-<script setup>
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-
-const { isOpen, svg, open, close } = useMermaidPreview();
-
-// Open preview with custom SVG
-function showDiagram() {
-  open('<svg>...</svg>');
-}
-</script>
-```
-
 ## Troubleshooting
 
 ### Diagrams Not Rendering

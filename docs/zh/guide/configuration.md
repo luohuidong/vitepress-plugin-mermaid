@@ -132,23 +132,6 @@ export default {
 } satisfies Theme;
 ```
 
-### 程序化控制
-
-使用 `useMermaidPreview` 组合式函数进行程序化控制：
-
-```vue
-<script setup>
-import { useMermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
-
-const { isOpen, svg, open, close } = useMermaidPreview();
-
-// 使用自定义 SVG 打开预览
-function showDiagram() {
-  open('<svg>...</svg>');
-}
-</script>
-```
-
 ## 故障排除
 
 ### 图表无法渲染

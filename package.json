@@ -26,10 +26,6 @@
     "./components/MermaidPreview.vue": {
       "types": "./dist/components/MermaidPreview.vue.d.ts",
       "import": "./dist/components/MermaidPreview.vue"
-    },
-    "./composables/useMermaidPreview": {
-      "types": "./dist/composables/useMermaidPreview.d.ts",
-      "import": "./dist/composables/useMermaidPreview.js"
     }
   },
   "files": [

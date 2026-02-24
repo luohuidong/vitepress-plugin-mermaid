@@ -2,18 +2,18 @@
   <Teleport to="body">
     <div v-if="isOpen" class="mermaid-preview-overlay" @click="handleOverlayClick">
       <div class="mermaid-preview-container" @click.stop>
-        <!-- 工具栏 -->
+        <!-- Toolbar -->
         <div class="mermaid-preview-toolbar">
           <div class="toolbar-left">
             <span class="zoom-text" ref="zoomTextRef">100%</span>
           </div>
           <div class="toolbar-center">
-            <button class="toolbar-btn" title="缩小" @click="zoomOut">
+            <button class="toolbar-btn" title="Zoom out" @click="zoomOut">
               <svg viewBox="0 0 24 24" width="20" height="20">
                 <path fill="currentColor" d="M19 13H5v-2h14v2z" />
               </svg>
             </button>
-            <button class="toolbar-btn" title="重置" @click="resetZoom">
+            <button class="toolbar-btn" title="Reset" @click="resetZoom">
               <svg viewBox="0 0 24 24" width="20" height="20">
                 <path
                   fill="currentColor"
@@ -21,14 +21,14 @@
                 />
               </svg>
             </button>
-            <button class="toolbar-btn" title="放大" @click="zoomIn">
+            <button class="toolbar-btn" title="Zoom in" @click="zoomIn">
               <svg viewBox="0 0 24 24" width="20" height="20">
                 <path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
               </svg>
             </button>
           </div>
           <div class="toolbar-right">
-            <button class="toolbar-btn close-btn" title="关闭 (ESC)" @click="close">
+            <button class="toolbar-btn close-btn" title="Close (ESC)" @click="close">
               <svg viewBox="0 0 24 24" width="20" height="20">
                 <path
                   fill="currentColor"
@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <!-- 图表容器 -->
+        <!-- Diagram container -->
         <div
           ref="canvasRef"
           class="mermaid-preview-canvas"
@@ -49,8 +49,8 @@
           <div ref="contentRef" class="mermaid-preview-content" v-html="svg" />
         </div>
 
-        <!-- 提示文字 -->
-        <div class="mermaid-preview-hint">滚轮缩放 · 拖拽移动 · ESC 关闭</div>
+        <!-- Hint text -->
+        <div class="mermaid-preview-hint">Scroll to zoom · Drag to pan · ESC to close</div>
       </div>
     </div>
   </Teleport>

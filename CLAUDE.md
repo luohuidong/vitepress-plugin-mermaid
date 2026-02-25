@@ -89,7 +89,7 @@ The plugin requires these to be installed by the consumer:
 **Formatting Rule:** After modifying any code, format only the changed files with Prettier:
 
 ```bash
-prettier --write <changed-files>
+pnpm prettier --write <changed-files>
 ```
 
 Prettier configuration (from `.prettierrc`):

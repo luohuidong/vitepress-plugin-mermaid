@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { mermaidMarkdownPlugin } from '../../src/mermaid-markdown';
+import { mermaidMarkdownPlugin } from '../../src/';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({

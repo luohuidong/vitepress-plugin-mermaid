@@ -6,11 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Development
-pnpm dev              # Build library in watch mode (tsc --watch)
+pnpm dev              # Build library in watch mode (vite build --watch)
 pnpm docs:dev         # Start docs dev server
 
 # Build
-pnpm build            # Build library for production (tsc only)
+pnpm build            # Build library for production (vite + tsc for types)
 pnpm docs:build       # Build documentation site
 
 # Code Quality
@@ -36,31 +36,25 @@ This is a VitePress plugin that adds fullscreen preview functionality for Mermai
 
 ### Build System
 
-The build uses TypeScript compiler (`tsc`) with a post-build copy step:
+The build uses Vite with library mode:
 
-1. `tsc` compiles TypeScript files and generates `.d.ts` declarations
-2. `scripts/copy-components.js` copies Vue SFCs and composables to `dist/components/`
+1. `vite build` compiles all source files (TypeScript and Vue SFCs) into a single `dist/index.js`
+2. `tsc --emitDeclarationOnly` generates `.d.ts` type declarations
 
-Vue SFCs (`.vue` files) are **distributed as source** - not compiled. This allows consumers to import them directly:
-
-```typescript
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
-```
-
-Note: The `src/components` directory is excluded from TypeScript compilation since these files are copied as-is to `dist/`.
+All components and logic are bundled into a single ESM output with external dependencies (vitepress, mermaid, vue).
 
 ### Key Patterns
 
 - **SSR Safety:** All mermaid-related code uses dynamic imports gated by `typeof window !== 'undefined'` checks
 - **Client-side only:** Mermaid rendering only happens in the browser, not during SSR
 - **State Management:** Simple shared state pattern using Vue's reactivity system (no Pinia/Vuex)
-- **Component Distribution:** Vue files distributed as source (not compiled) for VitePress compatibility
+- **Component Distribution:** All components are bundled by Vite into a single ESM module
 
 ### Project Structure
 
 ```
 src/
-├── components/          # Vue SFCs (distributed as source, not compiled)
+├── components/          # Vue SFCs (bundled by Vite)
 │   ├── Mermaid.vue
 │   ├── MermaidPreview.vue
 │   └── useMermaidPreview.ts  # Internal state management

@@ -22,12 +22,12 @@ yarn add -D @unify-js/vitepress-plugin-mermaid
 
 :::
 
-## 对等依赖
+## 依赖要求
 
-确保您已安装所需的对等依赖：
+本插件需要以下依赖才能正常工作，请确保已安装：
 
 ```bash
-pnpm add -D vitepress mermaid vue
+pnpm add -D vitepress mermaid
 ```
 
 ## 配置

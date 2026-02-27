@@ -22,12 +22,12 @@ yarn add -D @unify-js/vitepress-plugin-mermaid
 
 :::
 
-## Peer Dependencies
+## Dependency Requirements
 
-Make sure you have the required peer dependencies installed:
+This plugin requires the following dependencies to work properly. Please make sure they are installed:
 
 ```bash
-pnpm add -D vitepress mermaid vue
+pnpm add -D vitepress mermaid
 ```
 
 ## Configuration

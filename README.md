@@ -21,6 +21,14 @@ npm install @unify-js/vitepress-plugin-mermaid
 yarn add @unify-js/vitepress-plugin-mermaid
 ```
 
+## Dependency Requirements
+
+This plugin requires the following dependencies to work properly. Please make sure they are installed:
+
+```bash
+pnpm add -D vitepress mermaid
+```
+
 ## Usage
 
 ### Method 1: Using Theme Extension (Recommended)
@@ -129,8 +137,7 @@ md.use(mermaidMarkdownPlugin);
 ## Requirements
 
 - `vitepress`: ^1.0.0
-- `vue`: ^3.0.0
-- `mermaid`: ^10.0.0 || ^11.0.0
+- `mermaid`: ^11.0.0
 
 ## License
 

@@ -38,7 +38,7 @@ Create or edit your `.vitepress/config.ts` file:
 
 ```typescript
 import { defineConfig } from 'vitepress';
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 
 export default defineConfig({
   markdown: {
@@ -72,8 +72,7 @@ For more control, manually register the components:
 import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
+import { Mermaid, MermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
 export default {
   extends: DefaultTheme,

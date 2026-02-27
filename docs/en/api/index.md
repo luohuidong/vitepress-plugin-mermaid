@@ -4,15 +4,19 @@ Complete API reference for VitePress Mermaid.
 
 ## Package Exports
 
-The plugin provides multiple entry points for different use cases:
+All APIs are exported from the main entry point `@unify-js/vitepress-plugin-mermaid`:
 
-| Import Path                                                        | Description                                 |
-| ------------------------------------------------------------------ | ------------------------------------------- |
-| `@unify-js/vitepress-plugin-mermaid`                               | Main entry with all composables and plugins |
-| `@unify-js/vitepress-plugin-mermaid/theme`                         | Theme configuration helper                  |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | Markdown-it plugin                          |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid component                           |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | Preview modal component                     |
+```typescript
+// Default export: theme configuration
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid';
+
+// Named exports
+import {
+  mermaidMarkdownPlugin, // Markdown-it plugin
+  Mermaid, // Diagram component
+  MermaidPreview, // Preview modal component
+} from '@unify-js/vitepress-plugin-mermaid';
+```
 
 ## Main Exports
 

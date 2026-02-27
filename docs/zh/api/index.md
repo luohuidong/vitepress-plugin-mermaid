@@ -4,15 +4,19 @@ VitePress Mermaid 的完整 API 参考。
 
 ## 包导出
 
-插件为不同的使用场景提供了多个入口点：
+所有 API 都从主入口 `@unify-js/vitepress-plugin-mermaid` 导出：
 
-| 导入路径                                                           | 描述                             |
-| ------------------------------------------------------------------ | -------------------------------- |
-| `@unify-js/vitepress-plugin-mermaid`                               | 主入口，包含所有组合式函数和插件 |
-| `@unify-js/vitepress-plugin-mermaid/theme`                         | 主题配置助手                     |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | Markdown-it 插件                 |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid 组件                     |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览模态框组件                   |
+```typescript
+// 默认导出：主题配置
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid';
+
+// 命名导出
+import {
+  mermaidMarkdownPlugin, // Markdown-it 插件
+  Mermaid, // 图表组件
+  MermaidPreview, // 预览弹窗组件
+} from '@unify-js/vitepress-plugin-mermaid';
+```
 
 ## 主要导出
 

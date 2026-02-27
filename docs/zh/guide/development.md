@@ -7,40 +7,44 @@
 ### 源码结构
 
 ```
-packages/vitepress-plugin-mermaid-preview/
-├── src/
-│   ├── components/
-│   │   ├── Mermaid.vue           # 图表渲染组件 (Vue SFC)
-│   │   ├── MermaidPreview.vue    # 全屏预览组件 (Vue SFC)
-│   │   └── useMermaidPreview.ts  # 内部状态管理
-│   ├── index.ts                  # 主入口，导出所有功能
-│   ├── theme.ts                  # 主题配置，一键集成
-│   └── mermaid-markdown.ts       # markdown-it 插件
-├── dist/                         # 构建输出（包含在发布中）
-│   ├── index.js                  # 主入口
-│   ├── index.d.ts                # 类型声明
-│   ├── theme.js                  # 主题配置
-│   ├── theme.d.ts                # 类型声明
-│   ├── mermaid-markdown.js       # markdown-it 插件
-│   ├── mermaid-markdown.d.ts     # 类型声明
-│   └── components/               # 从 src/components 复制
-│       ├── Mermaid.vue
-│       ├── MermaidPreview.vue
-│       └── useMermaidPreview.ts
-├── package.json
-├── tsconfig.json
-└── README.md
+src/
+├── components/
+│   ├── Mermaid.vue           # 图表渲染组件 (Vue SFC)
+│   ├── MermaidPreview.vue    # 全屏预览组件 (Vue SFC)
+│   ├── useMermaidPreview.ts  # 内部状态管理
+│   └── Layout.vue            # 布局组件（包含预览插槽）
+├── index.ts                  # 主入口，导出所有功能
+├── theme.ts                  # 主题配置，一键集成
+└── mermaid-markdown.ts       # markdown-it 插件
 ```
 
-### 导出路径
+### 构建输出
 
-| 导入路径                                                           | 描述                                    |
-| ------------------------------------------------------------------ | --------------------------------------- |
-| `@unify-js/vitepress-plugin-mermaid`                               | 主入口，导出 `mermaidMarkdownPlugin` 等 |
-| `@unify-js/vitepress-plugin-mermaid/theme`                         | 主题配置，推荐方式                      |
-| `@unify-js/vitepress-plugin-mermaid/mermaid-markdown`              | markdown-it 插件                        |
-| `@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue`        | Mermaid 组件 (Vue SFC)                  |
-| `@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue` | 预览组件 (Vue SFC)                      |
+构建使用 Vite 的库模式：
+
+```
+dist/
+├── index.js      # 打包后的 ESM 输出（包含所有组件和逻辑）
+└── index.d.ts    # 类型声明（由 vue-tsc 生成）
+```
+
+所有组件和逻辑都被打包到单个 ESM 文件中，外部依赖（vitepress、mermaid、vue）保持外部化。
+
+### 导出内容
+
+所有公共 API 都从主入口 `@unify-js/vitepress-plugin-mermaid` 导出：
+
+```typescript
+// 默认导出：主题配置
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid';
+
+// 命名导出
+import {
+  mermaidMarkdownPlugin, // Markdown-it 插件
+  Mermaid, // 图表组件
+  MermaidPreview, // 预览弹窗组件
+} from '@unify-js/vitepress-plugin-mermaid';
+```
 
 ## 本地开发
 

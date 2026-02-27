@@ -10,7 +10,7 @@ pnpm dev              # Build library in watch mode (vite build --watch)
 pnpm docs:dev         # Start docs dev server
 
 # Build
-pnpm build            # Build library for production (vite + tsc for types)
+pnpm build            # Build library for production (vite + vue-tsc for types)
 pnpm docs:build       # Build documentation site
 
 # Code Quality
@@ -39,7 +39,7 @@ This is a VitePress plugin that adds fullscreen preview functionality for Mermai
 The build uses Vite with library mode:
 
 1. `vite build` compiles all source files (TypeScript and Vue SFCs) into a single `dist/index.js`
-2. `tsc --emitDeclarationOnly` generates `.d.ts` type declarations
+2. `vue-tsc --emitDeclarationOnly` generates `.d.ts` type declarations
 
 All components and logic are bundled into a single ESM output with external dependencies (vitepress, mermaid, vue).
 

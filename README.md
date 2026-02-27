@@ -29,7 +29,7 @@ In `.vitepress/theme/index.ts`:
 
 ```typescript
 import type { Theme } from 'vitepress';
-import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid/theme';
+import mermaidPluginTheme from '@unify-js/vitepress-plugin-mermaid';
 
 export default {
   extends: mermaidPluginTheme,
@@ -44,8 +44,7 @@ For more flexible control, you can configure manually:
 import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import Mermaid from '@unify-js/vitepress-plugin-mermaid/components/Mermaid.vue';
-import MermaidPreview from '@unify-js/vitepress-plugin-mermaid/components/MermaidPreview.vue';
+import { Mermaid, MermaidPreview } from '@unify-js/vitepress-plugin-mermaid';
 
 export default {
   extends: DefaultTheme,
@@ -67,7 +66,7 @@ In `.vitepress/config.ts`:
 
 ```typescript
 import { defineConfig } from 'vitepress';
-import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid/mermaid-markdown';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-plugin-mermaid';
 
 export default defineConfig({
   markdown: {
@@ -126,42 +125,6 @@ md.use(mermaidMarkdownPlugin);
 | `Ctrl/Cmd + 0` | Reset zoom           |
 | `Mouse wheel`  | Zoom                 |
 | `Drag`         | Move diagram         |
-
-## FAQ
-
-### TypeScript Cannot Recognize `.vue` Files
-
-If you encounter errors like the following when using TypeScript:
-
-```
-Cannot find module './components/Mermaid.vue' or its corresponding type declarations.
-```
-
-This is because TypeScript doesn't recognize `.vue` file types by default. The solution is to create a type declaration file in your project:
-
-**Method: Create `env.d.ts` file**
-
-Create an `env.d.ts` file in your project root (or `src` directory):
-
-```typescript
-/// <reference types="vite/client" />
-
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue';
-  const component: DefineComponent<{}, {}, any>;
-  export default component;
-}
-```
-
-Then ensure this file is included in `tsconfig.json`:
-
-```json
-{
-  "include": ["src/**/*", "env.d.ts"]
-}
-```
-
-**Note:** If you're using VitePress, support for `.vue` files is usually built-in and doesn't require additional configuration.
 
 ## Requirements
 

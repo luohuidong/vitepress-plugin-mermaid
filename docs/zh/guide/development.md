@@ -7,7 +7,7 @@
 ### 源码结构
 
 ```
-src/
+packages/vitepress-mermaid/src/
 ├── components/
 │   ├── Mermaid.vue           # 图表渲染组件 (Vue SFC)
 │   ├── MermaidPreview.vue    # 全屏预览组件 (Vue SFC)
@@ -52,9 +52,9 @@ import {
 
 ```bash
 # 进入插件目录
-cd packages/vitepress-plugin-mermaid-preview
+cd packages/vitepress-mermaid
 
-# 安装依赖
+# 安装依赖（从 monorepo 根目录）
 pnpm install
 
 # 开发模式（监听文件变更）

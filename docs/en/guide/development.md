@@ -7,7 +7,7 @@ This guide is for contributors who want to understand the project structure and 
 ### Source Structure
 
 ```
-src/
+packages/vitepress-mermaid/src/
 ├── components/
 │   ├── Mermaid.vue           # Diagram rendering component (Vue SFC)
 │   ├── MermaidPreview.vue    # Fullscreen preview component (Vue SFC)
@@ -52,9 +52,9 @@ import {
 
 ```bash
 # Navigate to plugin directory
-cd packages/vitepress-plugin-mermaid-preview
+cd packages/vitepress-mermaid
 
-# Install dependencies
+# Install dependencies (from monorepo root)
 pnpm install
 
 # Development mode (watch file changes)

@@ -52,22 +52,32 @@ All components and logic are bundled into a single ESM output with external depe
 
 ### Project Structure
 
-```
-src/
-├── components/          # Vue SFCs (bundled by Vite)
-│   ├── Mermaid.vue
-│   ├── MermaidPreview.vue
-│   └── useMermaidPreview.ts  # Internal state management
-├── index.ts            # Main exports
-├── theme.ts            # Theme integration
-└── mermaid-markdown.ts # Markdown-it plugin
+Monorepo managed with pnpm workspaces:
 
-docs/                   # VitePress documentation site
+```
+packages/vitepress-mermaid/     # Main plugin package
+├── src/
+│   ├── components/              # Vue SFCs (bundled by Vite)
+│   │   ├── Mermaid.vue
+│   │   ├── MermaidPreview.vue
+│   │   └── useMermaidPreview.ts
+│   ├── index.ts                 # Main exports
+│   ├── theme.ts                 # Theme integration
+│   └── mermaid-markdown.ts      # Markdown-it plugin
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+
+docs/                           # VitePress documentation site (separate package)
 ├── .vitepress/
-│   ├── config.ts       # Site config with i18n (en/zh)
+│   ├── config.ts               # Site config with i18n (en/zh)
 │   └── theme/index.ts
-├── en/                 # English docs
-└── zh/                 # Chinese docs
+├── package.json
+├── en/                         # English docs
+└── zh/                         # Chinese docs
+
+package.json                    # Root monorepo config (scripts only)
+pnpm-workspace.yaml             # Workspace definition
 ```
 
 ### Peer Dependencies

@@ -1,27 +1,14 @@
 {
-  "name": "@unify-js/vitepress-mermaid",
+  "name": "@unify-js/vitepress-mermaid-monorepo",
   "version": "0.1.0",
-  "description": "VitePress custom theme for Mermaid diagram preview with fullscreen, zoom, and pan support",
+  "private": true,
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "vite build && vue-tsc --emitDeclarationOnly",
-    "typecheck": "vue-tsc --noEmit",
-    "dev": "vite build --watch",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
+    "build": "pnpm --filter @unify-js/vitepress-mermaid build",
+    "dev": "pnpm --filter @unify-js/vitepress-mermaid dev",
+    "docs:dev": "pnpm --filter @unify-js/vitepress-mermaid-docs dev",
+    "docs:build": "pnpm --filter @unify-js/vitepress-mermaid-docs build",
+    "docs:preview": "pnpm --filter @unify-js/vitepress-mermaid-docs preview",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -34,19 +21,7 @@
   ],
   "author": "Luo Huidong",
   "license": "MIT",
-  "peerDependencies": {
-    "mermaid": "^11.0.0",
-    "vitepress": "^1.0.0"
-  },
   "devDependencies": {
-    "@types/node": "^24.10.13",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "mermaid": "^11.0.0",
-    "prettier": "^3.5.0",
-    "typescript": "^5.0.0",
-    "vite": "^7.3.1",
-    "vitepress": "^1.6.3",
-    "vue": "^3.5.28",
-    "vue-tsc": "^3.2.5"
+    "prettier": "^3.5.0"
   }
 }

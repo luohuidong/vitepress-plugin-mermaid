@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { mermaidMarkdownPlugin } from '../../src/';
+import { mermaidMarkdownPlugin } from '@unify-js/vitepress-mermaid';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({

@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div v-if="isOpen" class="mermaid-preview-overlay" @click="handleOverlayClick">
+    <div v-if="isOpen" class="mermaid-preview-overlay" @click="close">
       <div class="mermaid-preview-container" @click.stop>
         <!-- Toolbar -->
         <div class="mermaid-preview-toolbar">
@@ -57,209 +57,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
-import { useMermaidPreview } from './useMermaidPreview';
+import { watch, onUnmounted } from 'vue';
+import { useMermaidPreview } from '../useMermaidPreview';
+import { useCanvasTransform } from './useCanvasTransform';
+import { usePreviewKeyboard } from './usePreviewKeyboard';
 
 const { isOpen, svg, close } = useMermaidPreview();
 
-// DOM 引用
-const canvasRef = ref<HTMLElement>();
-const contentRef = ref<HTMLElement>();
-const zoomTextRef = ref<HTMLElement>();
+const {
+  canvasRef,
+  contentRef,
+  zoomTextRef,
+  zoomIn,
+  zoomOut,
+  resetZoom,
+  handleWheel,
+  handleMouseDown,
+  initTransform,
+  cleanup,
+} = useCanvasTransform();
 
-// 变换状态 (使用普通变量，避免 Vue 响应式开销)
-let scale = 2;
-let translateX = 0;
-let translateY = 0;
+usePreviewKeyboard({
+  isOpen,
+  onClose: close,
+  onZoomIn: zoomIn,
+  onZoomOut: zoomOut,
+  onResetZoom: resetZoom,
+});
 
-// 拖拽状态
-let isDragging = false;
-let dragStartX = 0;
-let dragStartY = 0;
-let initialTranslateX = 0;
-let initialTranslateY = 0;
-
-// 配置
-const MIN_SCALE = 0.1;
-const MAX_SCALE = 10;
-const ZOOM_STEP = 0.2;
-const WHEEL_SENSITIVITY = 0.001;
-
-// 直接应用变换到 DOM
-function applyTransform() {
-  const content = contentRef.value;
-  if (!content) return;
-
-  content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-
-  // 更新缩放百分比显示
-  if (zoomTextRef.value) {
-    zoomTextRef.value.textContent = `${Math.round(scale * 100)}%`;
-  }
-}
-
-// 缩放操作
-function zoomIn() {
-  scale = Math.min(scale * (1 + ZOOM_STEP), MAX_SCALE);
-  applyTransform();
-}
-
-function zoomOut() {
-  scale = Math.max(scale / (1 + ZOOM_STEP), MIN_SCALE);
-  applyTransform();
-}
-
-function resetZoom() {
-  scale = 2;
-  translateX = 0;
-  translateY = 0;
-  applyTransform();
-}
-
-// 滚轮缩放
-function handleWheel(e: WheelEvent) {
-  e.preventDefault();
-
-  const canvas = canvasRef.value;
-  if (!canvas) return;
-
-  const rect = canvas.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-
-  // 鼠标相对于画布中心的位置
-  const mouseX = e.clientX - centerX;
-  const mouseY = e.clientY - centerY;
-
-  // 计算新的缩放比例
-  const delta = -e.deltaY * WHEEL_SENSITIVITY;
-  const newScale = Math.min(Math.max(scale * (1 + delta), MIN_SCALE), MAX_SCALE);
-
-  // 以鼠标位置为中心缩放
-  const scaleRatio = newScale / scale;
-  translateX = mouseX - (mouseX - translateX) * scaleRatio;
-  translateY = mouseY - (mouseY - translateY) * scaleRatio;
-  scale = newScale;
-
-  applyTransform();
-}
-
-// 拖拽开始
-function handleMouseDown(e: MouseEvent) {
-  if (e.button !== 0) return;
-
-  isDragging = true;
-  dragStartX = e.clientX;
-  dragStartY = e.clientY;
-  initialTranslateX = translateX;
-  initialTranslateY = translateY;
-
-  // 添加拖拽时的样式
-  const content = contentRef.value;
-  if (content) {
-    content.style.cursor = 'grabbing';
-  }
-
-  // 添加全局鼠标事件监听
-  document.addEventListener('mousemove', handleGlobalMouseMove);
-  document.addEventListener('mouseup', handleGlobalMouseUp);
-}
-
-// 拖拽移动 (全局)
-function handleGlobalMouseMove(e: MouseEvent) {
-  if (!isDragging) return;
-
-  const dx = e.clientX - dragStartX;
-  const dy = e.clientY - dragStartY;
-
-  translateX = initialTranslateX + dx;
-  translateY = initialTranslateY + dy;
-
-  applyTransform();
-}
-
-// 拖拽结束 (全局)
-function handleGlobalMouseUp() {
-  if (!isDragging) return;
-  isDragging = false;
-
-  const content = contentRef.value;
-  if (content) {
-    content.style.cursor = 'grab';
-  }
-
-  // 清理全局事件
-  document.removeEventListener('mousemove', handleGlobalMouseMove);
-  document.removeEventListener('mouseup', handleGlobalMouseUp);
-}
-
-// 点击遮罩关闭
-function handleOverlayClick() {
-  close();
-}
-
-// 键盘事件
-function handleKeydown(e: KeyboardEvent) {
-  if (!isOpen.value) return;
-
-  switch (e.key) {
-    case 'Escape':
-      close();
-      break;
-    case '+':
-    case '=':
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        zoomIn();
-      }
-      break;
-    case '-':
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        zoomOut();
-      }
-      break;
-    case '0':
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        resetZoom();
-      }
-      break;
-  }
-}
-
-// 监听打开状态，重置变换
+// Reset transform when preview opens
 watch(
   () => isOpen.value,
   open => {
     if (open) {
-      scale = 2;
-      translateX = 0;
-      translateY = 0;
-
-      // 等待 DOM 更新后应用初始状态
-      requestAnimationFrame(() => {
-        const content = contentRef.value;
-        if (content) {
-          content.style.transformOrigin = 'center center';
-          content.style.cursor = 'grab';
-          applyTransform();
-        }
-      });
+      initTransform();
     }
   }
 );
 
-onMounted(() => {
-  // 键盘事件
-  document.addEventListener('keydown', handleKeydown);
-});
-
 onUnmounted(() => {
-  document.removeEventListener('keydown', handleKeydown);
-  // 清理可能残留的全局鼠标事件
-  document.removeEventListener('mousemove', handleGlobalMouseMove);
-  document.removeEventListener('mouseup', handleGlobalMouseUp);
+  cleanup();
 });
 </script>
 

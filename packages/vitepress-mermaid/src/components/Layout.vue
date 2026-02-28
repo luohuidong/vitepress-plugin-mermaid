@@ -1,6 +1,6 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme';
-import MermaidPreview from './MermaidPreview.vue';
+import MermaidPreview from './MermaidPreview/index.vue';
 
 const { Layout } = DefaultTheme;
 </script>

@@ -11,7 +11,10 @@ packages/vitepress-mermaid/src/
 ├── components/
 │   ├── index.ts             # Component barrel exports
 │   ├── Mermaid.vue           # Diagram rendering component (Vue SFC)
-│   ├── MermaidPreview.vue    # Fullscreen preview component (Vue SFC)
+│   ├── MermaidPreview/        # Fullscreen preview module
+│   │   ├── index.vue          # Preview overlay component
+│   │   ├── useCanvasTransform.ts  # Zoom/pan/drag logic
+│   │   └── usePreviewKeyboard.ts  # Keyboard shortcuts
 │   ├── useMermaidPreview.ts  # Internal state management
 │   └── Layout.vue            # Layout component with preview slot
 ├── index.ts                  # Browser entry, exports MermaidTheme

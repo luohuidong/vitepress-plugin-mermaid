@@ -26,7 +26,11 @@ This is a VitePress plugin that adds fullscreen preview functionality for Mermai
 
 **Mermaid.vue** - Renders diagrams from markdown code blocks. Uses mermaid.js for rendering, supports dark/light theme switching, and emits click events to open preview.
 
-**MermaidPreview.vue** - Fullscreen overlay with zoom/pan controls. Uses direct DOM manipulation for smooth interactions (avoiding Vue reactivity overhead). Teleports to body for proper layering.
+**MermaidPreview/** - Fullscreen preview module, organized as a directory:
+
+- **index.vue** - Overlay component with toolbar, canvas, and hint. Teleports to body for proper layering. Delegates zoom/pan logic to composables below.
+- **useCanvasTransform.ts** - Zoom, pan, and drag interactions via direct DOM manipulation (avoids Vue reactivity overhead for high-frequency updates).
+- **usePreviewKeyboard.ts** - Keyboard shortcuts (ESC close, Ctrl+/-/0 zoom). Auto-manages event listener lifecycle.
 
 **useMermaidPreview.ts** - Internal global state management using a singleton pattern. Provides `open(svg)`, `close()`, and reactive `isOpen`/`svg` properties. Used internally by Mermaid and MermaidPreview components, not exported to users.
 
@@ -36,12 +40,16 @@ This is a VitePress plugin that adds fullscreen preview functionality for Mermai
 
 ### Build System
 
-The build uses Vite with library mode:
+The build uses Vite with library mode and multiple entry points:
 
-1. `vite build` compiles all source files (TypeScript and Vue SFCs) into a single `dist/index.js`
+1. `vite build` compiles source files into two separate bundles:
+   - `dist/index.js` - Theme components (browser-only, CSS auto-injected)
+   - `dist/config.js` - Config helpers (Node.js-only)
 2. `vue-tsc --emitDeclarationOnly` generates `.d.ts` type declarations
 
-All components and logic are bundled into a single ESM output with external dependencies (vitepress, mermaid, vue).
+**CSS Injection:** Uses `vite-plugin-css-injected-by-js` to automatically inject CSS into the page when the theme is imported. Users don't need to manually import CSS files.
+
+**Why separate entry points?** The config runs in Node.js and theme runs in the browser. The theme imports `vitepress/theme` which contains browser-specific code (CSS, fonts). Keeping them separate prevents module resolution errors when loading the config.
 
 ### Key Patterns
 
@@ -59,7 +67,10 @@ packages/vitepress-mermaid/     # Main plugin package
 ├── src/
 │   ├── components/              # Vue SFCs (bundled by Vite)
 │   │   ├── Mermaid.vue
-│   │   ├── MermaidPreview.vue
+│   │   ├── MermaidPreview/
+│   │   │   ├── index.vue
+│   │   │   ├── useCanvasTransform.ts
+│   │   │   └── usePreviewKeyboard.ts
 │   │   └── useMermaidPreview.ts
 │   ├── index.ts                 # Main exports
 │   ├── theme.ts                 # Theme integration

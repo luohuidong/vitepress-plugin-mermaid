@@ -11,7 +11,10 @@ packages/vitepress-mermaid/src/
 ├── components/
 │   ├── index.ts             # 组件统一导出
 │   ├── Mermaid.vue           # 图表渲染组件 (Vue SFC)
-│   ├── MermaidPreview.vue    # 全屏预览组件 (Vue SFC)
+│   ├── MermaidPreview/        # 全屏预览模块
+│   │   ├── index.vue          # 预览弹层组件
+│   │   ├── useCanvasTransform.ts  # 缩放/平移/拖拽逻辑
+│   │   └── usePreviewKeyboard.ts  # 键盘快捷键
 │   ├── useMermaidPreview.ts  # 内部状态管理
 │   └── Layout.vue            # 布局组件（包含预览插槽）
 ├── index.ts                  # 浏览器入口，导出 MermaidTheme

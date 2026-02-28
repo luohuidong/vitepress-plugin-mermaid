@@ -43,5 +43,3 @@ export function useMermaidPreview() {
     close,
   };
 }
-
-export default useMermaidPreview;

@@ -1,4 +1,12 @@
-export { default } from './theme';
-export { default as theme } from './theme';
-export { Mermaid, MermaidPreview } from './components';
-export { mermaidMarkdownPlugin } from './mermaid-markdown';
+import DefaultTheme from 'vitepress/theme';
+import type { Theme } from 'vitepress';
+import { Layout, Mermaid, MermaidPreview } from './components';
+
+export const MermaidTheme = {
+  extends: DefaultTheme,
+  Layout,
+  enhanceApp({ app }) {
+    app.component('Mermaid', Mermaid);
+    app.component('MermaidPreview', MermaidPreview);
+  },
+} satisfies Theme;

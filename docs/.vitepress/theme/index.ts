@@ -1,6 +1,6 @@
 import type { Theme } from 'vitepress';
-import { theme as baseTheme } from '@unify-js/vitepress-mermaid';
+import { MermaidTheme } from '@unify-js/vitepress-mermaid';
 
 export default {
-  extends: baseTheme,
+  extends: MermaidTheme,
 } satisfies Theme;

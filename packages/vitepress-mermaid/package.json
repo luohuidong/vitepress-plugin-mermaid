@@ -35,8 +35,7 @@
   "license": "MIT",
   "peerDependencies": {
     "mermaid": "^11.0.0",
-    "vitepress": "^1.0.0",
-    "vue": "^3.0.0"
+    "vitepress": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.13",
